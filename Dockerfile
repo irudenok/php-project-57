@@ -74,14 +74,15 @@ COPY --from=node-builder /app/public/build ./public/build
 # Complete composer setup and generate autoloader
 RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Install make and bash
-RUN apk add --no-cache make bash
-
 EXPOSE 8000
 
-# Use PORT environment variable for Render.com, default to 8000
-CMD ["bash", "-c", "make start"]
+# Use entrypoint script which runs migrations and seeders, then starts the app
+ENTRYPOINT ["docker-entrypoint.sh"]
