@@ -28,6 +28,8 @@ RUN apk add --no-cache \
     unzip \
     curl \
     git \
+    make \
+    bash \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
