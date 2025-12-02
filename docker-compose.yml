@@ -1,0 +1,56 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    image: hexlet-code
+    container_name: hexlet-code-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=hexlet_code
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=secret
+      - DATABASE_URL=postgresql://postgres:secret@db:5432/hexlet_code
+      - SESSION_DRIVER=database
+      - MAIL_MAILER=log
+    depends_on:
+      - db
+    networks:
+      - hexlet-code-network
+
+  # PostgreSQL Service
+  db:
+    image: postgres:15
+    container_name: hexlet-code-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hexlet_code
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - hexlet-code-network
+
+volumes:
+  dbdata:
+    driver: local
+
+networks:
+  hexlet-code-network:
+    driver: bridge

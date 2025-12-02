@@ -1,0 +1,21 @@
+{
+    "Name": "Имя",
+    "Email": "Email",
+    "Password": "Пароль",
+    "Confirm Password": "Подтверждение пароля",
+    "Remember me": "Запомнить меня",
+    "Forgot your password?": "Забыли пароль?",
+    "Log in": "Войти",
+    "Log Out": "Выйти",
+    "Register": "Регистрация",
+    "Already registered?": "Уже зарегистрированы?",
+    "Reset Password": "Сбросить пароль",
+    "Email Password Reset Link": "Отправить ссылку для сброса пароля",
+    "Confirm": "Подтвердить",
+    "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.": "Спасибо за регистрацию! Перед началом работы, пожалуйста, подтвердите ваш email адрес, перейдя по ссылке, которую мы только что отправили вам на почту. Если вы не получили письмо, мы с удовольствием отправим вам другое.",
+    "A new verification link has been sent to the email address you provided during registration.": "Новая ссылка для подтверждения была отправлена на email адрес, указанный при регистрации.",
+    "Resend Verification Email": "Отправить письмо для подтверждения повторно",
+    "This is a secure area of the application. Please confirm your password before continuing.": "Это защищенная область приложения. Пожалуйста, подтвердите ваш пароль перед продолжением.",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Забыли пароль? Не проблема. Просто укажите ваш email адрес, и мы отправим вам ссылку для сброса пароля, которая позволит вам выбрать новый."
+}
+
