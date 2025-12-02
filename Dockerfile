@@ -17,7 +17,7 @@ COPY public ./public
 RUN npm run build
 
 # Main image
-FROM php:8.4-fpm-alpine
+FROM php:8.4-cli-alpine
 
 # Install system dependencies (including build dependencies)
 RUN apk add --no-cache \
@@ -80,4 +80,5 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 EXPOSE 8000
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Use PORT environment variable for Render.com, default to 8000
+CMD sh -c "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
