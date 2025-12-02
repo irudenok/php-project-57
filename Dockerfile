@@ -78,7 +78,10 @@ RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Install make and bash
+RUN apk add --no-cache make bash
+
 EXPOSE 8000
 
 # Use PORT environment variable for Render.com, default to 8000
-CMD sh -c "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+CMD ["bash", "-c", "make start"]
