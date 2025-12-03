@@ -78,10 +78,10 @@ RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
+    chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 EXPOSE 8000
