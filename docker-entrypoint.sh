@@ -9,6 +9,11 @@ until php artisan db:show > /dev/null 2>&1; do
 done
 echo "Database is up - executing commands"
 
+# Clear Laravel caches
+php artisan cache:clear
+php artisan view:clear
+php artisan config:clear
+
 # Run migrations (only if needed)
 php artisan migrate --force
 
