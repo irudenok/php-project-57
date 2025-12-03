@@ -9,7 +9,7 @@ return [
     'Forgot your password?' => 'Забыли пароль?',
     'Log in' => 'Войти',
     'Log Out' => 'Выйти',
-    'Register' => 'Регистрация',
+    'Register' => 'Зарегистрировать',
     'Already registered?' => 'Уже зарегистрированы?',
     'Reset Password' => 'Сбросить пароль',
     'Email Password Reset Link' => 'Отправить ссылку для сброса пароля',

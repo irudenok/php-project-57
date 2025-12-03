@@ -31,7 +31,7 @@
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('labels.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 mr-4">Отмена</a>
-                            <x-primary-button>Создать</x-primary-button>
+                            <x-primary-button type="submit">Создать</x-primary-button>
                         </div>
                     {!! html()->form()->close() !!}
                 </div>
