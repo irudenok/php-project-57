@@ -86,11 +86,12 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium space-x-3">
                                         <a href="{{ route('tasks.edit', $task) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Изменить</a>
                                         @if($task->created_by_id === auth()->id())
-                                        <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300" onclick="return confirm('Вы уверены?')">Удалить</button>
-                                        </form>
+                                        {!! html()->form('DELETE', route('tasks.destroy', $task))->class('inline')->open() !!}
+                                            {!! html()->button('Удалить')
+                                                ->type('submit')
+                                                ->class('text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300')
+                                                ->attribute('onclick', "return confirm('Вы уверены, что хотите удалить эту задачу?')") !!}
+                                        {!! html()->form()->close() !!}
                                         @endif
                                     </td>
                                     @endauth
