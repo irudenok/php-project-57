@@ -25,7 +25,7 @@ jobs:
           args: >
             -Dsonar.projectKey=irudenok_php-project-57
             -Dsonar.organization=irudenok
-            -Dsonar.sources=src/
+            -Dsonar.sources=app/
             -Dsonar.coverage.exclusions=**/*
             -Dsonar.coverage.enabled=false
 
