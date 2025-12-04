@@ -19,5 +19,7 @@ return [
     'Resend Verification Email' => 'Отправить письмо для подтверждения повторно',
     'This is a secure area of the application. Please confirm your password before continuing.' => 'Это защищенная область приложения. Пожалуйста, подтвердите ваш пароль перед продолжением.',
     'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.' => 'Забыли пароль? Не проблема. Просто укажите ваш email адрес, и мы отправим вам ссылку для сброса пароля, которая позволит вам выбрать новый.',
+    'failed' => 'Введите правильные имя пользователя и пароль',
+    'throttle' => 'Слишком много попыток входа. Пожалуйста, попробуйте еще раз через :seconds секунд.',
 ];
 

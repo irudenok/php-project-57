@@ -52,7 +52,7 @@
                                 Вход
                             </a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}">
+                                <a href="{{ route('register') }}" dusk="register-link">
                                     Регистрация
                                 </a>
                             @endif
