@@ -39,7 +39,7 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3" id="login-button">
+            <x-primary-button class="ms-3 normal-case" id="login-button">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
