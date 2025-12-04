@@ -48,7 +48,7 @@
                                 </button>
                             </form>
                         @else
-                            <a href="{{ route('login') }}">
+                            <a href="{{ route('login') }}" dusk="login-link">
                                 Вход
                             </a>
                             @if (Route::has('register'))
@@ -72,7 +72,7 @@
                         Это простой менеджер задач на Laravel
                     </p>
                     <div class="button-group">
-                        <a href="https://hexlet.io" class="hero-button" id="click-me-button" target="_blank">
+                        <a href="https://hexlet.io" class="hero-button" dusk="click-me-button" id="click-me-button" target="_blank">
                             Нажми меня
                         </a>
                     </div>
