@@ -55,7 +55,7 @@
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('tasks.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 mr-4">Отмена</a>
-                            <x-primary-button type="submit" dusk="update-button">Обновить</x-primary-button>
+                            <x-primary-button type="submit" dusk="update-button" class="normal-case">Обновить</x-primary-button>
                         </div>
                     {!! html()->form()->close() !!}
                 </div>
