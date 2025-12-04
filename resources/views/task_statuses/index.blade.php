@@ -40,6 +40,7 @@
                                         {!! html()->button('Удалить')
                                             ->type('submit')
                                             ->class('text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300')
+                                            ->attribute('dusk', 'delete-button')
                                             ->attribute('onclick', "return confirm('Вы уверены, что хотите удалить этот статус?')") !!}
                                     {!! html()->form()->close() !!}
                                 </td>

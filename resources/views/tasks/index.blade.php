@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                             <div class="flex items-end gap-3 pb-1">
-                                <x-primary-button type="submit">Применить</x-primary-button>
+                                <x-primary-button type="submit" dusk="apply-filter-button">Применить</x-primary-button>
                                 <a href="{{ route('tasks.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">Очистить</a>
                             </div>
                         </div>
@@ -90,6 +90,7 @@
                                             {!! html()->button('Удалить')
                                                 ->type('submit')
                                                 ->class('text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300')
+                                                ->attribute('dusk', 'delete-button')
                                                 ->attribute('onclick', "return confirm('Вы уверены, что хотите удалить эту задачу?')") !!}
                                         {!! html()->form()->close() !!}
                                         @endif

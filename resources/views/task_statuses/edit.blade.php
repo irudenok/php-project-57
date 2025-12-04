@@ -16,13 +16,12 @@
                                 ->id('name')
                                 ->class('block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600')
                                 ->value(old('name', $taskStatus->name))
-                                ->required()
                                 ->autofocus() !!}
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('task_statuses.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 mr-4">Отмена</a>
-                            <x-primary-button type="submit">Обновить</x-primary-button>
+                            <x-primary-button type="submit" dusk="update-button">Обновить</x-primary-button>
                         </div>
                     {!! html()->form()->close() !!}
                 </div>
