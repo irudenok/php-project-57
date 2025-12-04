@@ -72,7 +72,7 @@
                         Это простой менеджер задач на Laravel
                     </p>
                     <div class="button-group">
-                        <a href="https://hexlet.io" class="hero-button" target="_blank">
+                        <a href="https://hexlet.io" class="hero-button" id="click-me-button" target="_blank">
                             Нажми меня
                         </a>
                     </div>
