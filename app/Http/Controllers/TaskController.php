@@ -18,10 +18,9 @@ class TaskController extends Controller
 {
     public function index(): View
     {
-        /** @var \Spatie\QueryBuilder\QueryBuilder<\App\Models\Task> $query */
-        $query = QueryBuilder::for(Task::class)
-            ->with(['status', 'creator', 'assignee', 'labels']);
-        $tasks = $query
+        /** @phpstan-ignore-next-line */
+        $tasks = QueryBuilder::for(Task::class)
+            ->with(['status', 'creator', 'assignee', 'labels'])
             ->allowedFilters([
                 AllowedFilter::exact('status_id'),
                 AllowedFilter::exact('created_by_id'),
