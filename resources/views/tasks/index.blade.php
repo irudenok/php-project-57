@@ -46,7 +46,7 @@
                                 </select>
                             </div>
                             <div class="flex items-end gap-3 pb-1">
-                                <x-primary-button type="submit" dusk="apply-filter-button">Применить</x-primary-button>
+                                <x-primary-button type="submit" dusk="apply-filter-button" class="normal-case">Применить</x-primary-button>
                                 <a href="{{ route('tasks.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">Очистить</a>
                             </div>
                         </div>
@@ -86,13 +86,15 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium space-x-3">
                                         <a href="{{ route('tasks.edit', $task) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Изменить</a>
                                         @if($task->created_by_id === auth()->id())
-                                        {!! html()->form('DELETE', route('tasks.destroy', $task))->class('inline')->open() !!}
-                                            {!! html()->button('Удалить')
-                                                ->type('submit')
-                                                ->class('text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300')
-                                                ->attribute('dusk', 'delete-button')
-                                                ->attribute('onclick', "return confirm('Вы уверены, что хотите удалить эту задачу?')") !!}
-                                        {!! html()->form()->close() !!}
+                                        <form id="delete-task-form-{{ $task->id }}" method="POST" action="{{ route('tasks.destroy', $task) }}" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <a href="{{ route('tasks.destroy', $task) }}"
+                                           onclick="event.preventDefault(); if(confirm('Вы уверены, что хотите удалить эту задачу?')) { document.getElementById('delete-task-form-{{ $task->id }}').submit(); }"
+                                           class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
+                                            Удалить
+                                        </a>
                                         @endif
                                     </td>
                                     @endauth

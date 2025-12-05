@@ -38,13 +38,15 @@
                                 @auth
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium space-x-3">
                                     <a href="{{ route('labels.edit', $label) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Изменить</a>
-                                    {!! html()->form('DELETE', route('labels.destroy', $label))->class('inline')->open() !!}
-                                        {!! html()->button('Удалить')
-                                            ->type('submit')
-                                            ->class('text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300')
-                                            ->attribute('dusk', 'delete-button')
-                                            ->attribute('onclick', "return confirm('Вы уверены, что хотите удалить эту метку?')") !!}
-                                    {!! html()->form()->close() !!}
+                                    <form id="delete-label-form-{{ $label->id }}" method="POST" action="{{ route('labels.destroy', $label) }}" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                    <a href="{{ route('labels.destroy', $label) }}"
+                                       onclick="event.preventDefault(); if(confirm('Вы уверены, что хотите удалить эту метку?')) { document.getElementById('delete-label-form-{{ $label->id }}').submit(); }"
+                                       class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
+                                        Удалить
+                                    </a>
                                 </td>
                                 @endauth
                             </tr>
