@@ -41,12 +41,13 @@
 
                     <div class="nav-actions">
                         @auth
-                            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                            <form id="logout-form-welcome" method="POST" action="{{ route('logout') }}" style="display: none;">
                                 @csrf
-                                <button type="submit">
-                                    Выход
-                                </button>
                             </form>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form-welcome').submit();">
+                                {{ __('layouts.app.logout') }}
+                            </a>
                         @else
                             <a href="{{ route('login') }}" dusk="login-link">
                                 Вход

@@ -27,12 +27,14 @@
             <!-- Logout Button -->
             @auth
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <form method="POST" action="{{ route('logout') }}">
+                <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                     @csrf
-                    <button type="submit" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                        Выход
-                    </button>
                 </form>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                    {{ __('layouts.app.logout') }}
+                </a>
             </div>
             @else
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -80,12 +82,14 @@
             </div>
 
             <div class="mt-3 px-4">
-                <form method="POST" action="{{ route('logout') }}">
+                <form id="logout-form-mobile" method="POST" action="{{ route('logout') }}" style="display: none;">
                     @csrf
-                    <button type="submit" class="block w-full text-left px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                        Выход
-                    </button>
                 </form>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();"
+                   class="block w-full text-left px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+                    {{ __('layouts.app.logout') }}
+                </a>
             </div>
         </div>
         @else
