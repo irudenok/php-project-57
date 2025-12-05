@@ -18,13 +18,13 @@ class TestDataSeeder extends Seeder
     {
         // Создаем 10 пользователей (авторов и исполнителей)
         $users = User::factory(10)->create();
-        
+
         // Получаем все статусы
         $statuses = TaskStatus::all();
-        
+
         // Создаем метки
         $labels = Label::factory(15)->create();
-        
+
         // Создаем 20 задач с случайными авторами и исполнителями
         Task::factory(20)->create([
             'created_by_id' => fn() => $users->random()->id,

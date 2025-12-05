@@ -23,19 +23,19 @@ class TaskControllerTest extends TestCase
         $this->status = TaskStatus::factory()->create();
     }
 
-    public function test_index(): void
+    public function testIndex(): void
     {
         $response = $this->get(route('tasks.index'));
         $response->assertOk();
     }
 
-    public function test_create(): void
+    public function testCreate(): void
     {
         $response = $this->actingAs($this->user)->get(route('tasks.create'));
         $response->assertOk();
     }
 
-    public function test_store(): void
+    public function testStore(): void
     {
         $data = [
             'name' => 'Test Task',
@@ -50,21 +50,21 @@ class TaskControllerTest extends TestCase
         ]);
     }
 
-    public function test_show(): void
+    public function testShow(): void
     {
         $task = Task::factory()->create(['created_by_id' => $this->user->id]);
         $response = $this->get(route('tasks.show', $task));
         $response->assertOk();
     }
 
-    public function test_edit(): void
+    public function testEdit(): void
     {
         $task = Task::factory()->create(['created_by_id' => $this->user->id]);
         $response = $this->actingAs($this->user)->get(route('tasks.edit', $task));
         $response->assertOk();
     }
 
-    public function test_update(): void
+    public function testUpdate(): void
     {
         $task = Task::factory()->create(['created_by_id' => $this->user->id]);
         $data = ['name' => 'Updated Task', 'status_id' => $this->status->id];
@@ -73,7 +73,7 @@ class TaskControllerTest extends TestCase
         $this->assertDatabaseHas('tasks', ['id' => $task->id, 'name' => $data['name']]);
     }
 
-    public function test_destroy(): void
+    public function testDestroy(): void
     {
         $task = Task::factory()->create(['created_by_id' => $this->user->id]);
         $response = $this->actingAs($this->user)->delete(route('tasks.destroy', $task));
@@ -81,7 +81,7 @@ class TaskControllerTest extends TestCase
         $this->assertDatabaseMissing('tasks', ['id' => $task->id]);
     }
 
-    public function test_destroy_only_by_creator(): void
+    public function testDestroyOnlyByCreator(): void
     {
         $otherUser = User::factory()->create();
         $task = Task::factory()->create(['created_by_id' => $this->user->id]);
@@ -89,7 +89,7 @@ class TaskControllerTest extends TestCase
         $response->assertForbidden();
     }
 
-    public function test_store_requires_auth(): void
+    public function testStoreRequiresAuth(): void
     {
         $response = $this->post(route('tasks.store'), ['name' => 'Test', 'status_id' => $this->status->id]);
         $response->assertRedirect(route('login'));

@@ -20,19 +20,19 @@ class LabelControllerTest extends TestCase
         $this->user = User::factory()->create();
     }
 
-    public function test_index(): void
+    public function testIndex(): void
     {
         $response = $this->get(route('labels.index'));
         $response->assertOk();
     }
 
-    public function test_create(): void
+    public function testCreate(): void
     {
         $response = $this->actingAs($this->user)->get(route('labels.create'));
         $response->assertOk();
     }
 
-    public function test_store(): void
+    public function testStore(): void
     {
         $data = ['name' => 'Test Label'];
         $response = $this->actingAs($this->user)->post(route('labels.store'), $data);
@@ -40,14 +40,14 @@ class LabelControllerTest extends TestCase
         $this->assertDatabaseHas('labels', $data);
     }
 
-    public function test_edit(): void
+    public function testEdit(): void
     {
         $label = Label::factory()->create();
         $response = $this->actingAs($this->user)->get(route('labels.edit', $label));
         $response->assertOk();
     }
 
-    public function test_update(): void
+    public function testUpdate(): void
     {
         $label = Label::factory()->create();
         $data = ['name' => 'Updated Label'];
@@ -56,7 +56,7 @@ class LabelControllerTest extends TestCase
         $this->assertDatabaseHas('labels', $data);
     }
 
-    public function test_destroy(): void
+    public function testDestroy(): void
     {
         $label = Label::factory()->create();
         $response = $this->actingAs($this->user)->delete(route('labels.destroy', $label));
@@ -64,7 +64,7 @@ class LabelControllerTest extends TestCase
         $this->assertDatabaseMissing('labels', ['id' => $label->id]);
     }
 
-    public function test_destroy_with_tasks(): void
+    public function testDestroyWithTasks(): void
     {
         $label = Label::factory()->create();
         $task = Task::factory()->create();
@@ -74,7 +74,7 @@ class LabelControllerTest extends TestCase
         $this->assertDatabaseHas('labels', ['id' => $label->id]);
     }
 
-    public function test_store_requires_auth(): void
+    public function testStoreRequiresAuth(): void
     {
         $response = $this->post(route('labels.store'), ['name' => 'Test']);
         $response->assertRedirect(route('login'));

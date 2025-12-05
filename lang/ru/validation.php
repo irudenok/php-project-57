@@ -151,7 +151,7 @@ return [
         'password' => 'пароль',
         'password_confirmation' => 'подтверждение пароля',
     ],
-    
+
     'custom' => [
         'password' => [
             'min' => 'Пароль должен иметь длину не менее :min символов.',

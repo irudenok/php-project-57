@@ -20,19 +20,19 @@ class TaskStatusControllerTest extends TestCase
         $this->user = User::factory()->create();
     }
 
-    public function test_index(): void
+    public function testIndex(): void
     {
         $response = $this->get(route('task_statuses.index'));
         $response->assertOk();
     }
 
-    public function test_create(): void
+    public function testCreate(): void
     {
         $response = $this->actingAs($this->user)->get(route('task_statuses.create'));
         $response->assertOk();
     }
 
-    public function test_store(): void
+    public function testStore(): void
     {
         $data = ['name' => 'Test Status'];
         $response = $this->actingAs($this->user)->post(route('task_statuses.store'), $data);
@@ -40,14 +40,14 @@ class TaskStatusControllerTest extends TestCase
         $this->assertDatabaseHas('task_statuses', $data);
     }
 
-    public function test_edit(): void
+    public function testEdit(): void
     {
         $status = TaskStatus::factory()->create();
         $response = $this->actingAs($this->user)->get(route('task_statuses.edit', $status));
         $response->assertOk();
     }
 
-    public function test_update(): void
+    public function testUpdate(): void
     {
         $status = TaskStatus::factory()->create();
         $data = ['name' => 'Updated Status'];
@@ -56,7 +56,7 @@ class TaskStatusControllerTest extends TestCase
         $this->assertDatabaseHas('task_statuses', $data);
     }
 
-    public function test_destroy(): void
+    public function testDestroy(): void
     {
         $status = TaskStatus::factory()->create();
         $response = $this->actingAs($this->user)->delete(route('task_statuses.destroy', $status));
@@ -64,7 +64,7 @@ class TaskStatusControllerTest extends TestCase
         $this->assertDatabaseMissing('task_statuses', ['id' => $status->id]);
     }
 
-    public function test_destroy_with_tasks(): void
+    public function testDestroyWithTasks(): void
     {
         $status = TaskStatus::factory()->create();
         Task::factory()->create(['status_id' => $status->id]);
@@ -73,7 +73,7 @@ class TaskStatusControllerTest extends TestCase
         $this->assertDatabaseHas('task_statuses', ['id' => $status->id]);
     }
 
-    public function test_store_requires_auth(): void
+    public function testStoreRequiresAuth(): void
     {
         $response = $this->post(route('task_statuses.store'), ['name' => 'Test']);
         $response->assertRedirect(route('login'));
