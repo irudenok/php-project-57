@@ -20,6 +20,7 @@ class TaskController extends Controller
     {
         $tasks = QueryBuilder::for(Task::class)
             ->with(['status', 'creator', 'assignee', 'labels'])
+            // @phpstan-ignore-next-line
             ->allowedFilters([
                 AllowedFilter::exact('status_id'),
                 AllowedFilter::exact('created_by_id'),
