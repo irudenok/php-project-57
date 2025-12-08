@@ -31,9 +31,9 @@ class TaskController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        $statuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $statuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
 
         return view('tasks.index', compact('tasks', 'statuses', 'users', 'labels'));
     }
@@ -41,9 +41,9 @@ class TaskController extends Controller
     public function create(): View
     {
         $task = new Task();
-        $statuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $statuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
         return view('tasks.create', compact('task', 'statuses', 'users', 'labels'));
     }
 
@@ -69,9 +69,9 @@ class TaskController extends Controller
 
     public function edit(Task $task): View
     {
-        $statuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $statuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
         return view('tasks.edit', compact('task', 'statuses', 'users', 'labels'));
     }
 
@@ -90,7 +90,7 @@ class TaskController extends Controller
 
     public function destroy(Task $task): RedirectResponse
     {
-        if ($task->created_by_id !== Auth::id()) {
+        if (!$task->creator->is(Auth::user())) {
             abort(403);
         }
 

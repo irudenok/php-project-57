@@ -22,8 +22,8 @@
                                 <x-input-label for="filter[status_id]" value="Статус" />
                                 <select name="filter[status_id]" id="filter[status_id]" class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
                                     <option value="">Все статусы</option>
-                                    @foreach($statuses as $status)
-                                        <option value="{{ $status->id }}" {{ request('filter.status_id') == $status->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                    @foreach($statuses as $id => $name)
+                                        <option value="{{ $id }}" {{ request('filter.status_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -31,8 +31,8 @@
                                 <x-input-label for="filter[created_by_id]" value="Автор" />
                                 <select name="filter[created_by_id]" id="filter[created_by_id]" class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
                                     <option value="">Все авторы</option>
-                                    @foreach($users as $user)
-                                        <option value="{{ $user->id }}" {{ request('filter.created_by_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    @foreach($users as $id => $name)
+                                        <option value="{{ $id }}" {{ request('filter.created_by_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -40,8 +40,8 @@
                                 <x-input-label for="filter[assigned_to_id]" value="Исполнитель" />
                                 <select name="filter[assigned_to_id]" id="filter[assigned_to_id]" class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
                                     <option value="">Все исполнители</option>
-                                    @foreach($users as $user)
-                                        <option value="{{ $user->id }}" {{ request('filter.assigned_to_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    @foreach($users as $id => $name)
+                                        <option value="{{ $id }}" {{ request('filter.assigned_to_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -21,6 +21,9 @@ class TaskControllerTest extends TestCase
         parent::setUp();
         $this->user = User::factory()->create();
         $this->status = TaskStatus::factory()->create();
+        TaskStatus::factory()->count(4)->create();
+        Label::factory()->count(5)->create();
+        Task::factory()->count(3)->create(['created_by_id' => $this->user->id]);
     }
 
     public function testIndex(): void

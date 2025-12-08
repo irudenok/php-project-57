@@ -23,7 +23,7 @@ class StoreLabelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:1', Rule::unique('labels', 'name')],
+            'name' => ['required', 'string', 'min:1', 'max:255', Rule::unique('labels', 'name')],
             'description' => ['nullable', 'string'],
         ];
     }
