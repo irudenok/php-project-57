@@ -31,9 +31,9 @@ class TaskController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        $statuses = TaskStatus::pluck('name', 'id');
-        $users = User::pluck('name', 'id');
-        $labels = Label::pluck('name', 'id');
+        $statuses = TaskStatus::pluck('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        $labels = Label::pluck('name', 'id')->all();
 
         return view('tasks.index', compact('tasks', 'statuses', 'users', 'labels'));
     }
@@ -41,9 +41,9 @@ class TaskController extends Controller
     public function create(): View
     {
         $task = new Task();
-        $statuses = TaskStatus::pluck('name', 'id');
-        $users = User::pluck('name', 'id');
-        $labels = Label::pluck('name', 'id');
+        $statuses = TaskStatus::pluck('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        $labels = Label::pluck('name', 'id')->all();
         return view('tasks.create', compact('task', 'statuses', 'users', 'labels'));
     }
 
@@ -69,9 +69,9 @@ class TaskController extends Controller
 
     public function edit(Task $task): View
     {
-        $statuses = TaskStatus::pluck('name', 'id');
-        $users = User::pluck('name', 'id');
-        $labels = Label::pluck('name', 'id');
+        $statuses = TaskStatus::pluck('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        $labels = Label::pluck('name', 'id')->all();
         return view('tasks.edit', compact('task', 'statuses', 'users', 'labels'));
     }
 

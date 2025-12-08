@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-4">
                             <x-input-label for="status_id" value="Статус" />
-                            {!! html()->select('status_id', ['' => 'Выберите статус'] + $statuses->toArray())
+                            {!! html()->select('status_id', ['' => 'Выберите статус'] + $statuses)
                                 ->id('status_id')
                                 ->class('block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600')
                                 ->value(old('status_id', $task->status_id)) !!}
@@ -37,7 +37,7 @@
                         </div>
                         <div class="mb-4">
                             <x-input-label for="assigned_to_id" value="Исполнитель" />
-                            {!! html()->select('assigned_to_id', ['' => 'Не назначен'] + $users->toArray())
+                            {!! html()->select('assigned_to_id', ['' => 'Не назначен'] + $users)
                                 ->id('assigned_to_id')
                                 ->class('block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600')
                                 ->value(old('assigned_to_id', $task->assigned_to_id)) !!}
@@ -45,7 +45,7 @@
                         </div>
                         <div class="mb-4">
                             <x-input-label for="label_ids" value="Метки" />
-                            {!! html()->select('label_ids[]', $labels->toArray())
+                            {!! html()->select('label_ids[]', $labels)
                                 ->id('label_ids')
                                 ->class('block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600')
                                 ->multiple()
