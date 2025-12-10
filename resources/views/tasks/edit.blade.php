@@ -13,7 +13,14 @@
                         @method('PATCH')
                         <div class="mb-4">
                             <x-input-label for="name" value="Имя" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $task->name)" autofocus />
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                value="{{ old('name', $task->name) }}"
+                                class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                                autofocus
+                            >
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
                         <div class="mb-4">
