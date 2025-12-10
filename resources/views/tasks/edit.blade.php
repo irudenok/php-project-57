@@ -25,7 +25,12 @@
                         </div>
                         <div class="mb-4">
                             <x-input-label for="description" value="Описание" />
-                            <textarea id="description" name="description" rows="4" dusk="description-input" class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">{{ old('description', $task->description) }}</textarea>
+                            <textarea 
+                                id="description" 
+                                name="description" 
+                                rows="4" 
+                                dusk="description-input"
+                                class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">{{ old('description', $task->description) }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
                         <div class="mb-4">
@@ -57,6 +62,21 @@
                                 @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('assigned_to_id')" class="mt-2" />
+                        </div>
+                        <div class="mb-4">
+                            <x-input-label for="label_ids" value="Метки" />
+                            <select
+                                id="label_ids"
+                                name="label_ids[]"
+                                multiple
+                                dusk="labels-input"
+                                class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                            >
+                                @foreach($labels as $id => $name)
+                                    <option value="{{ $id }}" {{ in_array($id, old('label_ids', $task->labels->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $name }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('label_ids')" class="mt-2" />
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('tasks.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 mr-4">Отмена</a>
