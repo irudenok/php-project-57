@@ -9,7 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {!! html()->form('PATCH', route('labels.update', $label))->open() !!}
+                    <form method="POST" action="{{ route('labels.update', $label) }}">
+                        @csrf
+                        @method('PATCH')
                         <div class="mb-4">
                             <x-input-label for="name" value="Имя" />
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $label->name)" autofocus />
@@ -24,7 +26,7 @@
                             <a href="{{ route('labels.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 mr-4">Отмена</a>
                             <x-primary-button type="submit" dusk="update-button" class="normal-case">Обновить</x-primary-button>
                         </div>
-                    {!! html()->form()->close() !!}
+                    </form>
                 </div>
             </div>
         </div>

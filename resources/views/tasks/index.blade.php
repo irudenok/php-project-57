@@ -85,16 +85,16 @@
                                     @auth
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium space-x-3">
                                         <a href="{{ route('tasks.edit', $task) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Изменить</a>
-                                        @if($task->created_by_id === auth()->id())
-                                        <form id="delete-task-form-{{ $task->id }}" method="POST" action="{{ route('tasks.destroy', $task) }}" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                        <a href="{{ route('tasks.destroy', $task) }}"
-                                           onclick="event.preventDefault(); if(confirm('Вы уверены, что хотите удалить эту задачу?')) { document.getElementById('delete-task-form-{{ $task->id }}').submit(); }"
-                                           class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
-                                            Удалить
-                                        </a>
+                                        @if($task->creator && $task->creator->is(auth()->user()))
+                                            <form id="delete-task-form-{{ $task->id }}" method="POST" action="{{ route('tasks.destroy', $task) }}" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <a href="{{ route('tasks.destroy', $task) }}"
+                                               onclick="event.preventDefault(); if(confirm('Вы уверены, что хотите удалить эту задачу?')) { document.getElementById('delete-task-form-{{ $task->id }}').submit(); }"
+                                               class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
+                                                Удалить
+                                            </a>
                                         @endif
                                     </td>
                                     @endauth
