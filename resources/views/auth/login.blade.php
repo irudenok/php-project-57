@@ -8,15 +8,15 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input 
-                id="email" 
-                class="block mt-1 w-full" 
-                type="email" 
-                name="email" 
-                :value="old('email')" 
-                autofocus 
-                autocomplete="username"
+            <input 
+                id="email"
+                name="email"
+                type="email"
                 dusk="email-input"
+                value="{{ old('email') }}"
+                autofocus
+                autocomplete="username"
+                class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
             />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
@@ -24,16 +24,14 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input 
-                id="password" 
-                class="block mt-1 w-full"
-                type="password"
+            <input 
+                id="password"
                 name="password"
-                autocomplete="current-password"
+                type="password"
                 dusk="password-input"
+                autocomplete="current-password"
+                class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
             />
-
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
