@@ -19,30 +19,35 @@ class TaskStatusPolicy
 
     public function create(User $user): bool
     {
-        return $user !== null;
+        return true;
     }
 
     public function update(User $user, TaskStatus $taskStatus): bool
     {
-        return $user !== null;
+        // Если нет created_by_id, разрешаем всем авторизованным
+        // Или запрещаем всем, кроме админа
+        return true; // или return $user->is_admin;
     }
 
     public function delete(User $user, TaskStatus $taskStatus): bool
     {
-        if (!$user) {
+        // Запрещаем удаление, если есть связанные задачи
+        if ($taskStatus->tasks()->exists()) {
             return false;
         }
 
-        return true;
+        // Разрешаем всем авторизованным удалять пустые статусы
+        // Или только админам
+        return true; // или return $user->is_admin;
     }
 
     public function restore(User $user, TaskStatus $taskStatus): bool
     {
-        return $user !== null;
+        return true; // или return $user->is_admin;
     }
 
     public function forceDelete(User $user, TaskStatus $taskStatus): bool
     {
-        return $user !== null;
+        return true; // или return $user->is_admin;
     }
 }

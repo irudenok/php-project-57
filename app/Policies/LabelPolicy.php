@@ -19,30 +19,32 @@ class LabelPolicy
 
     public function create(User $user): bool
     {
-        return $user !== null;
+        return true;
     }
 
     public function update(User $user, Label $label): bool
     {
-        return $user !== null;
+        // Если нет created_by_id
+        return true; // или return $user->is_admin;
     }
 
     public function delete(User $user, Label $label): bool
     {
-        if (!$user) {
+        // Запрещаем удаление, если есть связанные задачи
+        if ($label->tasks()->exists()) {
             return false;
         }
 
-        return true;
+        return true; // или return $user->is_admin;
     }
 
     public function restore(User $user, Label $label): bool
     {
-        return $user !== null;
+        return true; // или return $user->is_admin;
     }
 
     public function forceDelete(User $user, Label $label): bool
     {
-        return $user !== null;
+        return true; // или return $user->is_admin;
     }
 }
