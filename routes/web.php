@@ -14,14 +14,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::resource('task_statuses', TaskStatusController::class)->except(['index', 'show']);
-    Route::resource('tasks', TaskController::class)->except(['index', 'show']);
-    Route::resource('labels', LabelController::class)->except(['index', 'show']);
-});
-
-Route::resource('task_statuses', TaskStatusController::class)->only(['index', 'show']);
-Route::resource('tasks', TaskController::class)->only(['index', 'show']);
-Route::resource('labels', LabelController::class)->only(['index', 'show']);
+Route::resource('task_statuses', TaskStatusController::class);
+Route::resource('tasks', TaskController::class);
+Route::resource('labels', LabelController::class);
 
 require __DIR__ . '/auth.php';

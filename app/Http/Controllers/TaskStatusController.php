@@ -10,6 +10,11 @@ use Illuminate\View\View;
 
 class TaskStatusController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(TaskStatus::class, 'task_status');
+    }
+
     public function index(): View
     {
         $taskStatuses = TaskStatus::orderBy('id')->paginate(10);

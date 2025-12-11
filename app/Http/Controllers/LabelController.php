@@ -10,6 +10,11 @@ use Illuminate\View\View;
 
 class LabelController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Label::class, 'label');
+    }
+
     public function index(): View
     {
         $labels = Label::orderBy('id')->paginate(10);
