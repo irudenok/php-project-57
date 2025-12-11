@@ -24,15 +24,8 @@ class TaskPolicy
 
     public function update(User $user, Task $task): bool
     {
-        if ($user->id === $task->created_by_id) {
-            return true;
-        }
-
-        if ($task->assigned_to_id && $user->id === $task->assigned_to_id) {
-            return true;
-        }
-
-        return false;
+        return $user->id === $task->created_by_id ||
+               ($task->assigned_to_id !== null && $user->id === $task->assigned_to_id);
     }
 
     public function delete(User $user, Task $task): bool
