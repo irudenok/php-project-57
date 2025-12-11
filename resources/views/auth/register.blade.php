@@ -9,7 +9,6 @@
                 id="name"
                 name="name"
                 type="text"
-                dusk="name-input"
                 value="{{ old('name') }}"
                 autofocus
                 autocomplete="name"
@@ -25,7 +24,6 @@
                 id="email"
                 name="email"
                 type="email"
-                dusk="email-input"
                 value="{{ old('email') }}"
                 autocomplete="username"
                 class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
@@ -40,7 +38,6 @@
                 id="password"
                 name="password"
                 type="password"
-                dusk="password-input"
                 autocomplete="new-password"
                 class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
             />
@@ -54,7 +51,6 @@
                 id="password_confirmation"
                 name="password_confirmation"
                 type="password"
-                dusk="password-confirmation-input"
                 autocomplete="new-password"
                 class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
             />
@@ -66,7 +62,7 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4 normal-case" id="register-button" dusk="register-button">
+            <x-primary-button class="ms-4 normal-case" id="register-button">
                 {{ __('Зарегистрировать') }}
             </x-primary-button>
         </div>

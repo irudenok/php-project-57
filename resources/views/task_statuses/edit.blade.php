@@ -18,7 +18,6 @@
                                 id="name"
                                 name="name"
                                 type="text"
-                                dusk="name-input"
                                 value="{{ old('name', $taskStatus->name) }}"
                                 class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                             >
@@ -26,7 +25,7 @@
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('task_statuses.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 mr-4">Отмена</a>
-                            <x-primary-button type="submit" dusk="update-button" class="normal-case">Обновить</x-primary-button>
+                            <x-primary-button type="submit" class="normal-case">Обновить</x-primary-button>
                         </div>
                     </form>
                 </div>

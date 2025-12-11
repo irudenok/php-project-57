@@ -23,7 +23,9 @@
                                 <select name="filter[status_id]" id="filter[status_id]" class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
                                     <option value="">Все статусы</option>
                                     @foreach($statuses as $id => $name)
-                                        <option value="{{ $id }}" {{ request('filter.status_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                        <option value="{{ $id }}" @selected(request('filter.status_id') == $id)>
+                                            {{ $name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -32,7 +34,9 @@
                                 <select name="filter[created_by_id]" id="filter[created_by_id]" class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
                                     <option value="">Все авторы</option>
                                     @foreach($users as $id => $name)
-                                        <option value="{{ $id }}" {{ request('filter.created_by_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                        <option value="{{ $id }}" @selected(request('filter.created_by_id') == $id)>
+                                            {{ $name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,12 +45,14 @@
                                 <select name="filter[assigned_to_id]" id="filter[assigned_to_id]" class="block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
                                     <option value="">Все исполнители</option>
                                     @foreach($users as $id => $name)
-                                        <option value="{{ $id }}" {{ request('filter.assigned_to_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                        <option value="{{ $id }}" @selected(request('filter.assigned_to_id') == $id)>
+                                            {{ $name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="flex items-end gap-3 pb-1">
-                                <x-primary-button type="submit" dusk="apply-filter-button" class="normal-case">Применить</x-primary-button>
+                                <x-primary-button type="submit" class="normal-case">Применить</x-primary-button>
                                 <a href="{{ route('tasks.index') }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">Очистить</a>
                             </div>
                         </div>
@@ -115,4 +121,3 @@
         </div>
     </div>
 </x-app-layout>
-

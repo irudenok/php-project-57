@@ -12,7 +12,6 @@
                 id="email"
                 name="email"
                 type="email"
-                dusk="email-input"
                 value="{{ old('email') }}"
                 autofocus
                 autocomplete="username"
@@ -28,7 +27,6 @@
                 id="password"
                 name="password"
                 type="password"
-                dusk="password-input"
                 autocomplete="current-password"
                 class="block mt-1 w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
             />
@@ -50,7 +48,7 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3 normal-case" id="login-button" dusk="login-button">
+            <x-primary-button class="ms-3 normal-case" id="login-button">
                 {{ __('Войти') }}
             </x-primary-button>
         </div>

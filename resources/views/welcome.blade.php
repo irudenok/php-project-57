@@ -49,11 +49,11 @@
                                 {{ __('layouts.app.logout') }}
                             </a>
                         @else
-                            <a href="{{ route('login') }}" dusk="login-link">
+                            <a href="{{ route('login') }}">
                                 Вход
                             </a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" dusk="register-link">
+                                <a href="{{ route('register') }}">
                                     Регистрация
                                 </a>
                             @endif
@@ -73,7 +73,7 @@
                         Это простой менеджер задач на Laravel
                     </p>
                     <div class="button-group">
-                        <a href="https://hexlet.io" class="hero-button" dusk="click-me-button" id="click-me-button" target="_blank">
+                        <a href="https://hexlet.io" class="hero-button" id="click-me-button" target="_blank">
                             Нажми меня
                         </a>
                     </div>
