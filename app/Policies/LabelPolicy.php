@@ -13,22 +13,22 @@ class LabelPolicy
         return true;
     }
 
-    public function view(?User $user): bool
+    public function view(?User $user, Label $label): bool
     {
         return true;
     }
 
-    public function create(): bool
+    public function create(User $user): bool
     {
         return Auth::check();
     }
 
-    public function update(): bool
+    public function update(User $user, Label $label): bool
     {
         return Auth::check();
     }
 
-    public function delete(Label $label): bool
+    public function delete(User $user, Label $label): bool
     {
         // Запрещаем удаление, если есть связанные задачи
         if ($label->tasks()->exists()) {
@@ -38,12 +38,12 @@ class LabelPolicy
         return true; // или return $user->is_admin;
     }
 
-    public function restore(): bool
+    public function restore(User $user, Label $label): bool
     {
         return Auth::check();
     }
 
-    public function forceDelete(): bool
+    public function forceDelete(User $user, Label $label): bool
     {
         return Auth::check();
     }

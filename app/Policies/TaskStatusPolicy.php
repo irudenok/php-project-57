@@ -13,22 +13,22 @@ class TaskStatusPolicy
         return true;
     }
 
-    public function view(?User $user): bool
+    public function view(?User $user, TaskStatus $taskStatus): bool
     {
         return true;
     }
 
-    public function create(): bool
+    public function create(User $user): bool
     {
         return Auth::check();
     }
 
-    public function update(): bool
+    public function update(User $user, TaskStatus $taskStatus): bool
     {
         return Auth::check();
     }
 
-    public function delete(TaskStatus $taskStatus): bool
+    public function delete(User $user, TaskStatus $taskStatus): bool
     {
         // Запрещаем удаление, если есть связанные задачи
         if ($taskStatus->tasks()->exists()) {
@@ -40,12 +40,12 @@ class TaskStatusPolicy
         return true; // или return $user->is_admin;
     }
 
-    public function restore(): bool
+    public function restore(User $user, TaskStatus $taskStatus): bool
     {
         return Auth::check();
     }
 
-    public function forceDelete(): bool
+    public function forceDelete(User $user, TaskStatus $taskStatus): bool
     {
         return Auth::check();
     }
