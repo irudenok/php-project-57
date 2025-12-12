@@ -19,14 +19,12 @@ class TaskStatusPolicy
 
     public function create(User $user): bool
     {
-        return true;
+        return Auth::check();
     }
 
     public function update(User $user, TaskStatus $taskStatus): bool
     {
-        // Если нет created_by_id, разрешаем всем авторизованным
-        // Или запрещаем всем, кроме админа
-        return true; // или return $user->is_admin;
+        return Auth::check();
     }
 
     public function delete(User $user, TaskStatus $taskStatus): bool
@@ -43,11 +41,11 @@ class TaskStatusPolicy
 
     public function restore(User $user, TaskStatus $taskStatus): bool
     {
-        return true; // или return $user->is_admin;
+        return Auth::check();
     }
 
     public function forceDelete(User $user, TaskStatus $taskStatus): bool
     {
-        return true; // или return $user->is_admin;
+        return Auth::check();
     }
 }
