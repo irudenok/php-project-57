@@ -8,27 +8,27 @@ use Illuminate\Support\Facades\Auth;
 
 class LabelPolicy
 {
-    public function viewAny(?User $user): bool
+    public function viewAny(): bool
     {
         return true;
     }
 
-    public function view(?User $user, Label $label): bool
+    public function view(): bool
     {
         return true;
     }
 
-    public function create(User $user): bool
+    public function create(): bool
     {
         return Auth::check();
     }
 
-    public function update(User $user, Label $label): bool
+    public function update(): bool
     {
         return Auth::check();
     }
 
-    public function delete(User $user, Label $label): bool
+    public function delete(Label $label): bool
     {
         // Запрещаем удаление, если есть связанные задачи
         if ($label->tasks()->exists()) {
@@ -38,12 +38,12 @@ class LabelPolicy
         return true; // или return $user->is_admin;
     }
 
-    public function restore(User $user, Label $label): bool
+    public function restore(): bool
     {
         return Auth::check();
     }
 
-    public function forceDelete(User $user, Label $label): bool
+    public function forceDelete(): bool
     {
         return Auth::check();
     }

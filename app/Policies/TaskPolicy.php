@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskPolicy
 {
-    public function viewAny(?User $user): bool
+    public function viewAny(): bool
     {
         return true;
     }
 
-    public function view(?User $user, Task $task): bool
+    public function view(): bool
     {
         return true;
     }
 
-    public function create(?User $user): bool
+    public function create(): bool
     {
         return Auth::check();
     }
